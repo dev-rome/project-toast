@@ -58,7 +58,6 @@ function ToastPlayground() {
               </label>
             ))}
           </div>
-
         </div>
 
         <div className={styles.row}>
