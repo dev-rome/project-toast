@@ -3,13 +3,13 @@ import React, { useState } from 'react';
 import Button from '../Button';
 
 import styles from './ToastPlayground.module.css';
-import Toast from '../Toast/Toast';
+import Toast from '../Toast';
 
 const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 
 function ToastPlayground() {
   const [message, setMessage] = useState("");
-  const [variant, setVariant] = useState("notice");
+  const [variant, setVariant] = useState("");
 
 
   return (
@@ -19,7 +19,7 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
-      <Toast message={message} />
+      <Toast message={message} variant={variant} />
 
       <div className={styles.controlsWrapper}>
         <div className={styles.row}>
