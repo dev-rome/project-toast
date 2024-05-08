@@ -1,4 +1,4 @@
-import React from 'react';
+import { useContext } from 'react';
 import {
   AlertOctagon,
   AlertTriangle,
@@ -6,6 +6,8 @@ import {
   Info,
   X,
 } from 'react-feather';
+
+import { ToastContext } from '../ToastProvider';
 
 import VisuallyHidden from '../VisuallyHidden';
 
@@ -18,8 +20,9 @@ const ICONS_BY_VARIANT = {
   error: AlertOctagon,
 };
 
-function Toast({ id, variant, handleDismiss, children }) {
+function Toast({ id, variant, children }) {
   const Icon = ICONS_BY_VARIANT[variant] || Info;
+  const { handleDismiss } = useContext(ToastContext);
 
   return (
     <div className={`${styles.toast} ${styles[variant]}`}>
