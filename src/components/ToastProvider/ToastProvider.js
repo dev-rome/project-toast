@@ -1,4 +1,4 @@
-import { useState, createContext } from 'react';
+import { useState, useEffect, createContext } from 'react';
 
 export const ToastContext = createContext();
 
@@ -15,6 +15,20 @@ function ToastProvider({ children }) {
       variant: 'success',
     },
   ]);
+
+  useEffect(() => {
+    function handleKeyDown(event) {
+      if (event.code === 'Escape') {
+        setToasts([]);
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
 
   const handleCreateToast = (message, variant) => {
     const nextToasts = [
